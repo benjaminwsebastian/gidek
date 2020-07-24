@@ -1,3 +1,13 @@
+# Docker and Django files
+db.sqlite3
+.env
+.env*
+__pycache__
+**/__pycache__
+.vscode/
+**/migrations
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

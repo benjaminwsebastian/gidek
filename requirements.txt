@@ -1,0 +1,6 @@
+asgiref==3.2.10
+django==3.0.8
+sqlparse==0.3.1
+social-auth-app-django
+psycopg2-binary==2.8.5
+gunicorn==20.0.4

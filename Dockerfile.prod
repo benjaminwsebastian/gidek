@@ -1,0 +1,66 @@
+###########
+# BUILDER #
+###########
+
+# base image
+FROM python:3.8.3 as builder
+
+# update packages
+#RUN if [ "$(whoami)" = "app" ]; then echo "Should not be logged in as app user... logging out" ; exit ; fi
+RUN apt-get update -y && apt-get upgrade -y && apt-get autoremove && \
+    apt-get autoclean && apt-get -y install netcat
+
+# set work directory
+WORKDIR /usr/src/app
+
+# set env vars
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# install dependencies
+COPY ./requirements.txt .
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/app/wheels -r requirements.txt
+
+# copy project files
+COPY . .
+
+#########
+# FINAL #
+#########
+
+# pull base image
+FROM nikolaik/python-nodejs:latest
+
+# create dir for app user
+RUN mkdir -p /home/app
+
+# create the app user
+RUN adduser app --disabled-password
+
+# create the appropriate directories
+ENV HOME=/home/app
+ENV APP_HOME=/home/app/web
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
+
+# install dependencies
+RUN apt-get -y update
+COPY --from=builder /usr/src/app/wheels /wheels
+COPY --from=builder /usr/src/app/requirements.txt .
+RUN pip install --no-cache /wheels/*
+
+# copy entrypoint-prod.sh
+COPY ./entrypoint.prod.sh $APP_HOME
+
+# copy project
+COPY . $APP_HOME
+
+# chown all the files to the app user
+RUN chown -R app:app $APP_HOME
+
+# change to the app user
+USER app
+
+# run entrypoint.sh
+RUN chmod +x ./entrypoint.prod.sh
+ENTRYPOINT ["/home/app/web/entrypoint.sh"]
