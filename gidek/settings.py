@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # My apps
+    'landing.apps.LandingConfig',
+    'users.apps.UsersConfig',
+    'faq.apps.FaqConfig',
+    'about.apps.AboutConfig',
+    'findaridepublic.apps.FindaridepublicConfig',
     # 3rd party
     'social_django',
 ]
@@ -66,7 +72,6 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "social_django.context_processors.backends",
                 "social_django.context_processors.login_redirect",
-                "admin_messages.context_processors.message_context",
             ],
         },
     },

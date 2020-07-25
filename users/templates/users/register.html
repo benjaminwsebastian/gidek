@@ -1,0 +1,106 @@
+{% extends "landing/base.html" %} {% block content %} {% load static %}
+<div class="wrapper">
+  <section class="section section-shaped section-lg">
+    <div class="shape shape-style-1 bg-gradient-default">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="container pt-lg-7">
+      <div class="row justify-content-center">
+        <div class="col-lg-5">
+          <div class="card bg-secondary shadow border-0 mt-2 mb-2">
+            <div class="card-header bg-white pb-5">
+              <div class="text-muted text-center mb-3">
+                <small>Sign up with</small>
+              </div>
+              <div class="text-center">
+                <a href="{% url 'social:begin' 'facebook-oauth2' %}" class="btn btn-neutral btn-icon mr-4">
+                  <span class="btn-inner--icon"><img
+                      src="{% static 'landing/assets/img/icons/common/facebook.svg' %}" /></span>
+                  <span class="btn-inner--text">Facebook</span>
+                </a>
+                <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn btn-neutral btn-icon">
+                  <span class="btn-inner--icon"><img
+                      src="{% static 'landing/assets/img/icons/common/google.svg' %}" /></span>
+                  <span class="btn-inner--text">Google</span>
+                </a>
+              </div>
+            </div>
+            <div class="card-body px-lg-5 py-lg-5">
+              <div class="text-center text-white mb-4">
+                <small>Or sign up with credentials</small>
+              </div>
+              <form role="form" method="POST">
+                {% csrf_token %}
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fa fa-user"></i></span>
+                    </div>
+                    <input class="form-control" id="{{ form.username.id_for_label }}"
+                      name="{{ form.username.html_name }}" placeholder="{{ form.username.label }}" type="text" />
+                  </div>
+                </div>
+                <small class="text-warning"> {{ form.username.errors }}</small>
+                <div class="form-group">
+                  <div class="input-group input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" id="{{ form.email.id_for_label }}" name="{{ form.email.html_name }}"
+                      placeholder="{{ form.email.label }}" type="text" />
+                  </div>
+                </div>
+                <small class="text-warning"> {{ form.email.errors }}</small>
+                <div class="form-group focused">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input class="form-control" id="{{ form.password1.id_for_label }}"
+                      name="{{ form.password1.html_name }}" placeholder="{{ form.password1.label }}" type="password" />
+                  </div>
+                </div>
+                <small class="text-warning"> {{ form.password1.errors }}</small>
+                <div class="form-group focused">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input class="form-control" id="{{ form.password2.id_for_label }}"
+                      name="{{ form.password2.html_name }}" placeholder="{{ form.password2.label }}" type="password" />
+                  </div>
+                  <small class="text-warning">
+                    {{ form.password2.errors }}</small>
+                </div>
+                <div class="row my-4">
+                  <div class="col-12">
+                    <div class="custom-control custom-control-alternative custom-checkbox">
+                      <input class="custom-control-input" id="{{ form.agreed.id_for_label }}"
+                        name="{{ form.agreed.html_name }}" type="checkbox" />
+                      <label class="custom-control-label" for="{{ form.agreed.id_for_label }}"><span>I agree with the
+                          <a href="#" target="_blank">Privacy Policy</a></span></label>
+                    </div>
+                    <small class="text-warning">
+                      {{ form.agreed.errors }}</small>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <input type="submit" class="btn btn-primary mt-4" value="Create account" />
+                  <input type="hidden" name="next" value="{{ next }}" />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  {% endblock content %}
+</div>

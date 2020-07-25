@@ -1,0 +1,29 @@
+{% extends "website/base.html" %} {% block content %}
+<div class="wrapper">
+  <div class="section section-hero section-shaped">
+    <div class="shape shape-style-3 shape-default"></div>
+
+    <div class="page-header">
+      <div class="container shape-container d-flex align-items-center py-lg">
+        <div class="col px-0">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-lg-12 text-center">
+              <h1 class="text-white display-1">Logged Out Successfully</h1>
+              <h2 class="display-4 font-weight-normal text-white">
+                <a href="{% url 'login' %}" style="color: #000000;"
+                  >Log back in</a
+                >
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container justify-content-center pt-4"></div>
+  <div class="section features-6">
+    <div class="container"></div>
+  </div>
+</div>
+{% endblock content %}

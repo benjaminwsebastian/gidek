@@ -1,0 +1,62 @@
+{% extends 'landing/base.html' %}{% load static %} {% block content %}
+<div class="container pt-lg-7">
+    <div class="row">
+        <h1>The Gidek team</h1>
+        <p>
+            We are a group of designers, software engineers and data scientists,
+            and
+            experienced community members and leaders. We've all gotten a lot of joy out of ride sharing and would like
+            to
+            make
+            that experience even better. We're made up of a group of people dedicated to building the platform, along
+            with a
+            large
+            network of ride share users that we consult with for advice.
+        </p>
+        <p>
+            We are actively looking for people to join the team, we need a broad range of experiences, expertise, and
+            cultural
+            backgrounds. Please consider joining us, whether you have skills, ideas, complaints, or just want to see
+            this
+            done right.
+        </p>
+    </div>
+    <div class="row">
+        <h1>Who we are</h1>
+    </div>
+    <div class="row justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{% static 'about/assets/img/team/benjo.jpg' %}" alt="Card image cap">
+            <div class="card-body">
+                <h3>Benjo</h3>
+                <h4>Developer</h4>
+                <p class="card-text">Benjo has a background in data science and backend development.
+                    He has years of leadership experience in project management and research.
+                    He has expertise in machine learning, algorithm design and network modeling.
+                </p>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{% static 'about/assets/img/team/tugba.png' %}" alt="Card image cap">
+            <div class="card-body">
+                <h3>Tuğba</h3>
+                <h4>Designer</h4>
+                <p class="card-text">Tugba is a lawyer turned designer and marketer. With years experience in
+                    volunteering
+                    design she brings her touch to Gidek to make the user experience great.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h1>Have skills you want to contribute?</h1>
+        <p>
+            Gidek is a community project, built by folks like you for the benefit of the global couch-surfing
+            community. If you would like to be
+            a part of this great new project, or leave your feedback on our ideas, click the button below and fill out
+            the short form.</p>
+
+    </div>
+</div>
+
+{% endblock content %}

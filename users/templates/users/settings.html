@@ -1,0 +1,10 @@
+{% extends "website/base.html" %}
+{% block content %}  
+<div class="content-section">
+	<div class="media-body">
+		<h2 class="account-heading">{{ user.username }}</h2>
+		<p class="text-secondary">{{ user.email }}</p>
+	</div>
+	<a href="{% url 'delete-account' %}"> Delete account</a>
+</div>
+{% endblock content %}
