@@ -1,5 +1,5 @@
 asgiref==3.2.10
-django==3.0.8
+django==3.1.9
 sqlparse==0.3.1
 social-auth-app-django
 psycopg2-binary==2.8.5
